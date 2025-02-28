@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\ContactApi;
 use App\Controllers\Contacts;
 use CodeIgniter\Router\RouteCollection;
 
@@ -14,4 +15,8 @@ $routes->group('', function ($routes) {
   $routes->get('/edit/(:num)', [Contacts::class, 'editPage']);
   $routes->post('/edit/(:num)', [Contacts::class, 'update']);
   $routes->get('/delete/(:num)', [Contacts::class, 'delete']);
+});
+
+$routes->group('api', function ($routes) {
+  $routes->get('contacts', [ContactApi::class, 'index']);
 });
